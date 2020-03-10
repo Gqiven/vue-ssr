@@ -1,0 +1,13 @@
+{
+  "name": "vue-ssr",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "xuqinwen",
+  "license": "MIT",
+  "dependencies": {
+    "vue": "^2.6.11",
+    "vue-server-renderer": "^2.6.11",
+    "webpack": "^4.42.0",
+    "webpack-cli": "^3.3.11"
+  }
+}

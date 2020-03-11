@@ -8,6 +8,25 @@ const path = require('path');
 const express = require('express');
 const server = express();
 
+//接口 api
+server.route('/api/list').get((req, res) => {
+  let data = {};
+  if(req.query.path === '/') {
+    data = {
+      data: {
+        list: [1,2]
+      }
+    }
+  }else {
+    data = {
+      data: {
+        list: ['a', 'b']
+      }
+    }
+  }
+  res.send(data)
+})
+
 //设置静态资源路径
 server.use('/dist', express.static('dist'));
 
@@ -53,6 +72,8 @@ server.get('*', (req, res) => {
     }
   })
 })
+
+
 
 //设置监听端口
 server.listen(3000, () => {

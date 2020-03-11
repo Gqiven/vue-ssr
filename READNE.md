@@ -29,4 +29,12 @@
   * npm run build:server #打包服务器端文件
   * npm run build:client #打包客户端文件
   * npm run server       #启动node服务
-  ````
+  ```
+
+#### 加入路由处理
+> 使用 vue-router
+> 将页面访问URL传递给应用程序，这样可以根据配置处理不同的URL访问，实现路由复用。
+
+#### 加入数据状态预存取
+> SSR渲染，如果依赖异步数据，那么需要在渲染前获取并解析完这些异步数据。
+> 使用Vuex

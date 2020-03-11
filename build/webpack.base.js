@@ -28,7 +28,7 @@ module.exports = {
   //输出配置
   output: {
     //文件名称
-    filename: 'app.js',
+    filename: '[name].js',
     //文件存放地址
     path: path.resolve(__dirname, '../dist'),
     publicPath: '/dist/'

@@ -30,11 +30,27 @@ const renderer = createBundleRenderer(serverBundle, {
   clientManifest
 })
 
-server.get('/', (req, res) => {
-  renderer.renderToString().then(html => {
-    res.end(html)
-  }).catch(err => {
-    console.error(err)
+// server.get('/', (req, res) => {
+//   renderer.renderToString().then(html => {
+//     res.end(html)
+//   }).catch(err => {
+//     console.error(err)
+//   })
+// })
+
+//add router
+server.get('*', (req, res) => {
+  const context = {url: req.url};
+  renderer.renderToString(context, (err, html) => {
+    if(err) {
+      if(err.code === 404) {
+        res.status(404).end('Page not found');
+      }else {
+        res.status(500).end('Internal Server Error');
+      }
+    }else {
+      res.end(html);
+    }
   })
 })
 

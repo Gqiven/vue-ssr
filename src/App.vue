@@ -3,6 +3,7 @@
     <h1>Vue SSR</h1>
     <div>the page url is {{ url }}</div>
     <button @click="fn">click</button>
+    <router-view></router-view>
   </div>
 </template>
 

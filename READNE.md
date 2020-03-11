@@ -1,16 +1,32 @@
 #### 构建步骤
-  > * 1、配置webpack打包环境
-  > * 2、Vue SSR 的初步实践
-  > * 3、Vue SSR 的逐步完善
-  
-  > webpack部分
   * yarn init -y
   * 创建目录
   ```bash
+    | -build/     （#存放构建配置文件）
+      | -webpack.base.js  #（公用配置）注意 vue-loader的安装与使用按照错误提示安装缺少的插件
+      | -webpack.dev.js   #（开发环境配置）
+      | -webpack.prod.js  #（生产环境配置）
     | -server/
       | -index.js #node运行文件
     | -src/
-      | -app.js
+      | -app.js#通用entry
+      | -entry-client.js #仅用于浏览器
+      | -entry-client.js #仅用于服务端
     | -public/
       | -index.html #模版文件 <!--vue-ssr-outlet--> 这里将是应用程序 HTML 标记注入的地方
   ```
+
+#### 运行步骤
+> package.json中添加运行指令
+  ```javascript
+  "scripts": {
+    "server": "node server/index.js",
+    "build:server": "webpack --config build/webpack.buildserver.js",
+    "build:client": "webpack --config build/webpack.buildclient.js"
+  }
+  ```
+  ```bash
+  * npm run build:server #打包服务器端文件
+  * npm run build:client #打包客户端文件
+  * npm run server       #启动node服务
+  ````

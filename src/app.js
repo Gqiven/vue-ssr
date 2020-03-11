@@ -1,11 +1,11 @@
-const Vue  = require('vue');
+import Vue from 'vue';
+import App from './App.vue';
 
-//为避免服务端的请求状态污染，每次请求都创建一个新的Vue实例
-module.exports = function createApp(ctx) {
-  return new Vue({
-    data: {
-      url: ctx.url
-    },
-    template: `<div>the page url is {{ url }}</div>`
+//为避免服务端的请求状态污染，导出一个工厂函数，用于创建新的实例
+export function createApp () {
+
+  const app = new Vue({
+    render: h => h(App)
   })
+  return { app }
 }
